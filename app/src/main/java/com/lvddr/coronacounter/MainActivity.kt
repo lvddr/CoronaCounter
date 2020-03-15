@@ -1,19 +1,13 @@
 package com.lvddr.coronacounter
 
 import android.os.Bundle
-import android.os.Looper
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.lvddr.coronacounter.R.layout.activity_main
+import kotlinx.android.synthetic.main.activity_main.*
 import org.jsoup.Jsoup
 
-class FetchStat: Thread() {
-    override fun run() {
-        val url = "https://www.worldometers.info/coronavirus/"
-        val doc1 = Jsoup.connect(url).get()
-        val contentDiv = doc1.select("#maincounter-wrap > div > span").first().text()
-        println("Number of confirmed Coronavirus cases is " + contentDiv)
-    }
-}
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +17,20 @@ class MainActivity : AppCompatActivity() {
         val thread = FetchStat()
         thread.start()
 
+
+
+
+    }
+    inner class FetchStat: Thread() {
+        override fun run() {
+            val url = "https://www.worldometers.info/coronavirus/"
+            val doc1 = Jsoup.connect(url).get()
+            val contentDiv = doc1.select("#maincounter-wrap > div > span").first().text()
+            println("Number of confirmed Coronavirus cases is " + contentDiv)
+            runOnUiThread() {
+                findViewById<TextView>(R.id.textView).text = contentDiv
+            }
+        }
 
     }
 }
