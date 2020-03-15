@@ -1,6 +1,7 @@
 package com.lvddr.coronacounter
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.lvddr.coronacounter.R.layout.activity_main
@@ -16,10 +17,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(activity_main)
         val thread = FetchStat()
         thread.start()
-
-
-
-
     }
     inner class FetchStat: Thread() {
         override fun run() {
