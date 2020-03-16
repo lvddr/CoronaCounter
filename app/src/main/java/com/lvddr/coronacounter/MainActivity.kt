@@ -22,10 +22,13 @@ class MainActivity : AppCompatActivity() {
         override fun run() {
             val url = "https://www.worldometers.info/coronavirus/"
             val doc1 = Jsoup.connect(url).get()
-            val contentDiv = doc1.select("#maincounter-wrap > div > span").first().text()
-            println("Number of confirmed Coronavirus cases is " + contentDiv)
+            val cases = doc1.select("#maincounter-wrap > div > span").first().text()
+            val dead = doc1.select("#maincounter-wrap > div > span").get(1).text()
+            val recovered = doc1.select("#maincounter-wrap > div > span").get(2).text()
             runOnUiThread() {
-                findViewById<TextView>(R.id.textView).text = contentDiv
+                findViewById<TextView>(R.id.textView).text = cases
+                findViewById<TextView>(R.id.textView3).text = dead
+                findViewById<TextView>(R.id.textView4).text = recovered
             }
         }
 
