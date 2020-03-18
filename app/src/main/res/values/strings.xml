@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CoronaCounter</string>
+    <string name="loading">ładowanie</string>
 </resources>
