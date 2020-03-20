@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">CoronaCounter</string>
-    <string name="loading">Ładowanie</string>
+    <string name="loading">Loading</string>
+    <string name="cases_corona">Confirmed cases of COVID-19:</string>
+    <string name="death_cases">Deaths</string>
+    <string name="recovered_cases">Recovered</string>
 </resources>
