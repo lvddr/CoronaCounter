@@ -4,4 +4,7 @@
     <string name="cases_corona">Confirmed cases of COVID-19:</string>
     <string name="death_cases">Deaths</string>
     <string name="recovered_cases">Recovered</string>
+    <string name="poland">Check another countries</string>
+    <string name="cases_corona_poland">Confirmed cases of COVID-19 in Poland</string>
+    <string name="check">check</string>
 </resources>
