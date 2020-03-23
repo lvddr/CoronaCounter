@@ -22,12 +22,8 @@ class Poland : AppCompatActivity() {
         glist.execute()
         val submitBtn: Button = findViewById(R.id.button2)
         submitBtn.setOnClickListener() {
-            if (editText.text.toString().isEmpty()) {
-                Toast.makeText(this, "Enter some info", Toast.LENGTH_LONG).show()
-            } else {
-                val gcountry = GetCountry(this)
-                gcountry.execute()
-            }
+            val gcountry = GetCountry(this)
+            gcountry.execute()
         }
     }
 
@@ -43,7 +39,7 @@ class Poland : AppCompatActivity() {
         }
 
         override fun doInBackground(vararg params: Void?): String? {
-            val docc = Jsoup.connect("https://www.worldometers.info/coronavirus/country/" + editText.text.toString()).followRedirects(true).get()
+            val docc = Jsoup.connect("https://www.worldometers.info/coronavirus/" + actv.text.toString()).followRedirects(true).get()
             cases = docc.select("#maincounter-wrap > div > span").get(0).text()
             dead = docc.select("#maincounter-wrap > div > span").get(1).text()
             recovered = docc.select("#maincounter-wrap > div > span").get(2).text()
@@ -58,18 +54,21 @@ class Poland : AppCompatActivity() {
         }
 
     }
-    inner class GetList internal constructor(context: Poland) : AsyncTask<Void, Void, String>() {
-        override fun doInBackground(vararg params: Void?): String? {
+    inner class GetList internal constructor(context: Poland) : AsyncTask<Void, Void, List<String>>() {
+        override fun doInBackground(vararg params: Void?): List<String> {
             val cipa = Jsoup.connect("https://www.worldometers.info/coronavirus").get()
             val a = cipa.select("a[href].mt_a").map { it.attr("href") }
             println(a)
 
 
-            return null
+            return a
         }
 
-        override fun onPostExecute(result: String?) {
-
+        override fun onPostExecute(result: List<String>) {
+            val adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, result)
+            actv.threshold = 0
+            actv.setAdapter(adapter)
+            Toast.makeText(context, "Finished Downloading", Toast.LENGTH_SHORT).show()
 
         }
     }

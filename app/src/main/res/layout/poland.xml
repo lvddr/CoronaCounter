@@ -7,22 +7,6 @@
     tools:context=".MainActivity">
 
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="257dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:hint="Enter country name"
-        android:imeActionId="666"
-        android:imeActionLabel="Some Label"
-        android:imeOptions="actionSearch"
-        android:inputType="textPersonName"
-        android:maxLines="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -98,7 +82,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/check"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -108,9 +91,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="AutoCompleteTextView"
-        tools:layout_editor_absoluteX="107dp"
-        tools:layout_editor_absoluteY="629dp"
-        />
+        android:completionThreshold="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.195" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
