@@ -3,10 +3,13 @@ package com.lvddr.coronacounter
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.lvddr.coronacounter.R.layout.activity_main
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.textView
+import kotlinx.android.synthetic.main.poland.*
 import org.jsoup.Jsoup
 
 
@@ -15,7 +18,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_main)
-
         val task = Async(this)
         task.execute()
         gtpl.setOnClickListener() {
@@ -23,8 +25,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
-
 
     inner class Async internal constructor(context: MainActivity) : AsyncTask<Void, Void, String>(){
         var cases: String? = null

@@ -103,4 +103,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
+    <AutoCompleteTextView
+        android:id="@+id/actv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="AutoCompleteTextView"
+        tools:layout_editor_absoluteX="107dp"
+        tools:layout_editor_absoluteY="629dp"
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
