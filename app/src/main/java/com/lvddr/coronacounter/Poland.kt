@@ -4,6 +4,8 @@ import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.os.AsyncTask
 import android.os.Bundle
+import android.util.TypedValue
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
@@ -55,20 +57,25 @@ class Poland : AppCompatActivity() {
 
     }
     inner class GetList internal constructor(context: Poland) : AsyncTask<Void, Void, List<String>>() {
+        var cases: String? = null
+
+        override fun onPreExecute() {
+            textView.text = "Loading"
+        }
+
         override fun doInBackground(vararg params: Void?): List<String> {
             val cipa = Jsoup.connect("https://www.worldometers.info/coronavirus").get()
-            val a = cipa.select("a[href].mt_a").map { it.attr("href") }
-            println(a)
-
-
-            return a
+            val a = cipa.select("#main_table_countries_today").first()
+            val b = a.select("a[href].mt_a").map { it.attr("href") }
+            return b
         }
 
         override fun onPostExecute(result: List<String>) {
             val adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, result)
             actv.threshold = 0
             actv.setAdapter(adapter)
-            Toast.makeText(context, "Finished Downloading", Toast.LENGTH_SHORT).show()
+            textView.text = "Ready"
+
 
         }
     }
