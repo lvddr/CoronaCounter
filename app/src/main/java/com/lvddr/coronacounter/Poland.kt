@@ -1,15 +1,11 @@
 package com.lvddr.coronacounter
 
-import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.os.AsyncTask
 import android.os.Bundle
-import android.util.TypedValue
-import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.poland.*
 import org.jsoup.Jsoup
@@ -41,7 +37,7 @@ class Poland : AppCompatActivity() {
         }
 
         override fun doInBackground(vararg params: Void?): String? {
-            val docc = Jsoup.connect("https://www.worldometers.info/coronavirus/" + actv.text.toString()).followRedirects(true).get()
+            val docc = Jsoup.connect("https://www.worldometers.info/coronavirus/" + spinner.selectedItem.toString()).followRedirects(true).get()
             cases = docc.select("#maincounter-wrap > div > span").get(0).text()
             dead = docc.select("#maincounter-wrap > div > span").get(1).text()
             recovered = docc.select("#maincounter-wrap > div > span").get(2).text()
@@ -71,9 +67,8 @@ class Poland : AppCompatActivity() {
         }
 
         override fun onPostExecute(result: List<String>) {
-            val adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, result)
-            actv.threshold = 0
-            actv.setAdapter(adapter)
+            val adapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, result)
+            spinner.setAdapter(adapter)
             textView.text = "Ready"
 
 

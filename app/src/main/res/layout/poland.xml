@@ -81,25 +81,23 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="56dp"
         android:text="@string/check"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
-    <AutoCompleteTextView
-        android:id="@+id/actv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="AutoCompleteTextView"
-        android:completionThreshold="1"
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="334dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="312dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.195" />
+        android:gravity="left"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
