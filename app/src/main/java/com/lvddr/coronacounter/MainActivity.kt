@@ -1,6 +1,7 @@
 package com.lvddr.coronacounter
 
 import android.content.Context
+import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -8,7 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.poland.*
+import kotlinx.android.synthetic.main.activity_main.*
 import org.jsoup.Jsoup
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +24,11 @@ class MainActivity : AppCompatActivity() {
         submitBtn.setOnClickListener() {
             val gcountry = GetCountry(this)
             gcountry.execute()
+        }
+        val gotoRec: Button = findViewById(R.id.button)
+        gotoRec.setOnClickListener() {
+            val intent = Intent(this, RecyclerView::class.java)
+            startActivity(intent)
         }
     }
 
